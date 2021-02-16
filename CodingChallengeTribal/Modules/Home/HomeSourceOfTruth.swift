@@ -10,3 +10,7 @@ import SwiftUI
 class HomeSourceOfTruth: ObservableObject {
     @Published var photoDataItems = [Unsplash]()
 }
+
+class FavoritesSourceOfTruth: ObservableObject {
+    @Published var favoriteItemsRealm = [Favorites]()
+}
