@@ -13,4 +13,4 @@ Es necesario tener instalado Cocoapods en la máquina a utilizar para poder corr
 ```bash
 pod install
 ```
-previo a correr la aplicación
+previo a correr la aplicación.
