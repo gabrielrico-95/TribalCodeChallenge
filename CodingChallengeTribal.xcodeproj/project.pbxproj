@@ -27,8 +27,6 @@
 		38A21C1725D91EFB0008041D /* WebServiceConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A21C1625D91EFB0008041D /* WebServiceConstants.swift */; };
 		38A21C2025D91F2B0008041D /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A21C1F25D91F2B0008041D /* NetworkHelper.swift */; };
 		38A21C2A25D920400008041D /* Unsplash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A21C2925D920400008041D /* Unsplash.swift */; };
-		38A21C3825D98CCF0008041D /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A21C3725D98CCF0008041D /* HomePresenter.swift */; };
-		38A21C4125D98D0A0008041D /* BasePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A21C4025D98D0A0008041D /* BasePresenter.swift */; };
 		38A21C4925D98F660008041D /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A21C4825D98F660008041D /* HomeView.swift */; };
 		38A21C4E25D99D400008041D /* HomeContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A21C4D25D99D400008041D /* HomeContentView.swift */; };
 		38A21C5325D9C21E0008041D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A21C5225D9C21E0008041D /* HomeViewController.swift */; };
@@ -81,8 +79,6 @@
 		38A21C1625D91EFB0008041D /* WebServiceConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebServiceConstants.swift; sourceTree = "<group>"; };
 		38A21C1F25D91F2B0008041D /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
 		38A21C2925D920400008041D /* Unsplash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unsplash.swift; sourceTree = "<group>"; };
-		38A21C3725D98CCF0008041D /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
-		38A21C4025D98D0A0008041D /* BasePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePresenter.swift; sourceTree = "<group>"; };
 		38A21C4825D98F660008041D /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		38A21C4D25D99D400008041D /* HomeContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeContentView.swift; sourceTree = "<group>"; };
 		38A21C5225D9C21E0008041D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -171,6 +167,18 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
+		38A1A7C025DB940600E13672 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				38A21C3625D98CB60008041D /* Home */,
+				3871F5C725DB717700C081C2 /* ContactInfo */,
+				3871F5C825DB718900C081C2 /* UnsplashImages */,
+				3871F5C925DB719500C081C2 /* ImageDetails */,
+				3886A54425DB72DE00B5C818 /* Favorites */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
 		38A21B9925D8C0A30008041D = {
 			isa = PBXGroup;
 			children = (
@@ -196,11 +204,7 @@
 		38A21BA425D8C0A30008041D /* CodingChallengeTribal */ = {
 			isa = PBXGroup;
 			children = (
-				3886A54425DB72DE00B5C818 /* Favorites */,
-				3871F5C925DB719500C081C2 /* ImageDetails */,
-				3871F5C825DB718900C081C2 /* UnsplashImages */,
-				3871F5C725DB717700C081C2 /* ContactInfo */,
-				38A21C3625D98CB60008041D /* Home */,
+				38A1A7C025DB940600E13672 /* Modules */,
 				38A21C2725D9202B0008041D /* Models */,
 				38A21C1E25D91F1C0008041D /* Helpers */,
 				38A21C1425D91EE60008041D /* Core */,
@@ -253,7 +257,6 @@
 			isa = PBXGroup;
 			children = (
 				3886A54A25DB766E00B5C818 /* Managers */,
-				38A21C3F25D98CF50008041D /* Bases */,
 				38A21C1525D91EEB0008041D /* Constants */,
 			);
 			path = Core;
@@ -289,21 +292,12 @@
 		38A21C3625D98CB60008041D /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				38A21C3725D98CCF0008041D /* HomePresenter.swift */,
 				38A21C4825D98F660008041D /* HomeView.swift */,
 				38A21C4D25D99D400008041D /* HomeContentView.swift */,
 				38A21C5225D9C21E0008041D /* HomeViewController.swift */,
 				38A21C5725D9D2200008041D /* HomeSourceOfTruth.swift */,
 			);
 			path = Home;
-			sourceTree = "<group>";
-		};
-		38A21C3F25D98CF50008041D /* Bases */ = {
-			isa = PBXGroup;
-			children = (
-				38A21C4025D98D0A0008041D /* BasePresenter.swift */,
-			);
-			path = Bases;
 			sourceTree = "<group>";
 		};
 		958835058E07B95402F76A4A /* Pods */ = {
@@ -580,7 +574,6 @@
 				38A21C1725D91EFB0008041D /* WebServiceConstants.swift in Sources */,
 				38A21C5325D9C21E0008041D /* HomeViewController.swift in Sources */,
 				38A21C2025D91F2B0008041D /* NetworkHelper.swift in Sources */,
-				38A21C4125D98D0A0008041D /* BasePresenter.swift in Sources */,
 				38A1A79525DB79FF00E13672 /* Favorites.swift in Sources */,
 				3886A54C25DB768400B5C818 /* DatabaseManager.swift in Sources */,
 				38A21C5825D9D2200008041D /* HomeSourceOfTruth.swift in Sources */,
@@ -588,7 +581,6 @@
 				38A21C4925D98F660008041D /* HomeView.swift in Sources */,
 				3886A54625DB72F000B5C818 /* FavoritesContentView.swift in Sources */,
 				38A1A79025DB788200E13672 /* DMThread.swift in Sources */,
-				38A21C3825D98CCF0008041D /* HomePresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,11 +8,9 @@
 import SwiftUI
 
 class HomeViewController: UIHostingController<HomeContentView>{
-    var homePresenter: HomePresenter!
     
     override init(rootView: HomeContentView) {
         super.init(rootView: rootView)
-        self.homePresenter = HomePresenter(photosService: ApiService())
     }
     
     @objc required dynamic init?(coder aDecoder: NSCoder) {
@@ -21,18 +19,15 @@ class HomeViewController: UIHostingController<HomeContentView>{
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        retrievePicturesFromApi()
     }
     
 }
 
 extension HomeViewController: HomeView {
     func retrievePicturesFromApi() {
-        homePresenter.getUnsplashImages()
     }
     
     func loadPicturesFromApi(picture: [Unsplash]) {
         self.rootView.homeSot.photoDataItems = picture
-//        photoDataItems = picture
     }
 }

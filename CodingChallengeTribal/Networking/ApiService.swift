@@ -6,49 +6,7 @@
 //
 
 import Foundation
-import Alamofire
-import RxAlamofire
-import RxSwift
-import SwiftyJSON
 import RealmSwift
-
-
-class ApiService {
-    let rxGetUnsplashDataResponse = PublishSubject<ApiResponse>()
-    let disposeBag = DisposeBag()
-    let unsplashKey = "1LSMlcnuw07rNL8Tr5kri20_yr6bXnAmbqsMxsn_J5Y"
-    
-//    func getUnsplashDataAPI() {
-//
-//        let url = "https://api.unsplash.com/users/alexmotoc/photos?order_by=latest&client_id=\(unsplashKey)"
-//
-//        RxAlamofire
-//            .requestJSON(.get,
-//                                url,
-//                                parameters: nil,
-//                                encoding: JSONEncoding.default,
-//                                headers: nil)
-//            .debug()
-//            .subscribe(onNext: { (headerResponse, json) in
-//            let jsonData = JSON(json)
-//            let statusCode:Int = headerResponse.statusCode
-//
-//            if let dict = jsonData.arrayObject {
-//                let code = HTTPResponseCode(rawValue:statusCode) ?? .Unknown
-//                let apiResponse = NetworkHelper.checkResponse(statusCode: code, responseDict: dict)
-//                self.rxGetUnsplashDataResponse.onNext(apiResponse)
-//            }
-//
-//
-//
-//        }, onError: {  (error) in
-//            print("API Response \(url)\nError:\(error.localizedDescription)")
-//            self.rxGetUnsplashDataResponse.onError(error)
-//        }, onDisposed: {
-//            print("Diposing API")
-//        }).disposed(by: disposeBag)
-//    }
-}
 
 class UnsplashPhoto: Identifiable, Codable {
     var id: String
