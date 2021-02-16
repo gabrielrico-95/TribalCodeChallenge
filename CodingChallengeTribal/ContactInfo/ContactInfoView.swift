@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+protocol ContactInfoView {
+    func createContactModel() -> ContactDetails
+    func sendContactInfoToApi()
+}

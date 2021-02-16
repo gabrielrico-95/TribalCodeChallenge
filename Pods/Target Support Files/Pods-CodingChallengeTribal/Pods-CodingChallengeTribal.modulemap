@@ -1,0 +1,6 @@
+framework module Pods_CodingChallengeTribal {
+  umbrella header "Pods-CodingChallengeTribal-umbrella.h"
+
+  export *
+  module * { export * }
+}

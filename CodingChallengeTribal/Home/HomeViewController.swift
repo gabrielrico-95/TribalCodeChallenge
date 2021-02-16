@@ -7,14 +7,32 @@
 
 import SwiftUI
 
-struct HomeViewController: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+class HomeViewController: UIHostingController<HomeContentView>{
+    var homePresenter: HomePresenter!
+    
+    override init(rootView: HomeContentView) {
+        super.init(rootView: rootView)
+        self.homePresenter = HomePresenter(photosService: ApiService())
     }
+    
+    @objc required dynamic init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+//        retrievePicturesFromApi()
+    }
+    
 }
 
-struct HomeViewController_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeViewController()
+extension HomeViewController: HomeView {
+    func retrievePicturesFromApi() {
+        homePresenter.getUnsplashImages()
+    }
+    
+    func loadPicturesFromApi(picture: [Unsplash]) {
+        self.rootView.homeSot.photoDataItems = picture
+//        photoDataItems = picture
     }
 }

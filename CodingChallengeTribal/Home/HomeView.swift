@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+protocol HomeView {
+    func retrievePicturesFromApi()
+    mutating func loadPicturesFromApi(picture: [Unsplash])
+}

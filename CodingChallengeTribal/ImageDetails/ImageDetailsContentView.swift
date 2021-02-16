@@ -11,6 +11,10 @@ import SDWebImageSwiftUI
 struct ImageDetailsContentView: View {
     var chosenImage: UnsplashPhoto
     
+    @State var isFavorite: Bool = false
+    
+    let localDB = RealmManager()
+    
     var body: some View {
         NavigationView {
             ScrollView {
@@ -28,9 +32,10 @@ struct ImageDetailsContentView: View {
                         .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height / 2)
                         .shadow(radius: 5)
                     Button(action: {
-                        print("Edit button was tapped")
+                        print("Setting favoriteImage")
+                        setFavoritePicture(chosenPicture: chosenImage)
                     }) {
-                        Image(systemName: "heart")
+                        Image(systemName: isFavorite ? "heart.fill" : "heart")
                             .resizable()
                             .foregroundColor(.red)
                             .frame(width: 36, height: 36, alignment: .center)
@@ -42,6 +47,26 @@ struct ImageDetailsContentView: View {
                 
             }
         } .navigationTitle("Detalles")
+    }
+    
+    func setFavoritePicture(chosenPicture: UnsplashPhoto) {
+        if let favPicture = localDB.read(Favorites.self).filter("id='\(chosenImage.id)'").first{
+            print("ya existía la foto")
+            localDB.delete(favPicture)
+            isFavorite = false
+        } else {
+            localDB.create(createFavoritesObject(chosenPicture: chosenPicture))
+            isFavorite = true
+            print("agregando a favoritas")
+        }
+    }
+    
+    func createFavoritesObject(chosenPicture: UnsplashPhoto) -> Favorites {
+        let favorite = Favorites()
+        favorite.id = chosenPicture.id
+        favorite.photoUrl = chosenPicture.urls["thumb"] ?? ""
+        favorite.alt_description = chosenPicture.alt_description ?? ""
+        return favorite
     }
 }
 

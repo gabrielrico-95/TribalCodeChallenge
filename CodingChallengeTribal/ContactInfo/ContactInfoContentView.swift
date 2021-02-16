@@ -98,6 +98,10 @@ struct ContactInfoContentView: View {
         }
     }
     
+}
+
+extension ContactInfoContentView: ContactInfoView {
+    
     func createContactModel() -> ContactDetails {
         var contactDetails = ContactDetails()
         contactDetails.fullName = username
@@ -115,6 +119,7 @@ struct ContactInfoContentView: View {
             apiMessage = messageString
         })
     }
+    
 }
 
 struct HomeContentView_Previews: PreviewProvider {

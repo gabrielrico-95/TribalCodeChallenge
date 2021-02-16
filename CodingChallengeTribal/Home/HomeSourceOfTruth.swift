@@ -5,4 +5,8 @@
 //  Created by Gabriel Rico on 14/2/21.
 //
 
-import Foundation
+import SwiftUI
+
+class HomeSourceOfTruth: ObservableObject {
+    @Published var photoDataItems = [Unsplash]()
+}
