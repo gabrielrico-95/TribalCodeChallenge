@@ -11,7 +11,7 @@ import SDWebImageSwiftUI
 struct FavoritesContentView: View {
     let localDB = RealmManager()
     
-    @State private var photoDataItemsRealm: [Favorites] = []
+    @ObservedObject var favoriteItemsRealm = FavoritesRealm()
     
     var body: some View {
         
@@ -34,29 +34,25 @@ struct FavoritesContentView: View {
                 } else {
                     
                     LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: 10, pinnedViews: /*@START_MENU_TOKEN@*/[]/*@END_MENU_TOKEN@*/, content: {
-                        ForEach(0..<20) { photo in
+                        ForEach(favoriteItemsRealm.favoritesArrayRealm, id: \.id) { photo in
                             VStack {
-                                Image(systemName: "photo")
+                                WebImage(url: URL(string: photo.photoUrl))
+                                    .placeholder(Image(systemName: "photo"))
+                                    .resizable()
+                                    .indicator(.activity)
                                     .scaledToFit()
                                     .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
                                     .shadow(radius: 5)
-                                    .frame(width: UIScreen.main.bounds.width/2, height: 200, alignment: .center)
                             }
                         }
                     })
+                    
                     
                 }
                 
             }
             .navigationTitle("Favoritos")
-        }.onAppear(perform: {
-            declareVariableChanges()
-        })
-    }
-    
-    func declareVariableChanges() {
-        let favorites = localDB.read(Favorites.self)
-        photoDataItemsRealm = Array<Favorites>(favorites)
+        }
     }
 }
 
