@@ -22,7 +22,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - ObjectMapper (~> 3.5)
-  - RealmSwift
+  - RealmSwift (= 10.1.4)
   - RxAlamofire
   - RxSwift (~> 5)
   - SDWebImageSwiftUI
@@ -51,6 +51,6 @@ SPEC CHECKSUMS:
   SDWebImageSwiftUI: 43687ffe232ddd33fe0659498b7ca9884fdd6b35
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
 
-PODFILE CHECKSUM: cce8f00ecc5ec94fac20d8d93d51521204a42d3b
+PODFILE CHECKSUM: f51cf79541ade7b259d51e6eb96d76cdcf76e4ed
 
 COCOAPODS: 1.10.0

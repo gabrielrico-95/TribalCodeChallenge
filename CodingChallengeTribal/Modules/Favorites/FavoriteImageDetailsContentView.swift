@@ -1,26 +1,25 @@
 //
-//  ImageDetailsContentView.swift
+//  FavoriteImageDetailsContentView.swift
 //  CodingChallengeTribal
 //
-//  Created by Gabriel Rico on 15/2/21.
+//  Created by Gabriel Rico on 16/2/21.
 //
 
 import SwiftUI
 import SDWebImageSwiftUI
 
-struct ImageDetailsContentView: View {
-    var chosenImage: UnsplashPhoto
-    
-    @State var isFavorite: Bool = false
-    
+struct FavoriteImageDetailsContentView: View {
     let localDB = RealmManager()
+    var chosenFavoriteImage: Favorites
+    
+    @State private var isFavorite: Bool = true
     
     var body: some View {
         NavigationView {
             ScrollView {
                 
                 VStack() {
-                    WebImage(url: URL(string: chosenImage.urls["thumb"]!))
+                    WebImage(url: URL(string: chosenFavoriteImage.photoUrl))
                         .placeholder(Image(systemName: "photo"))
                         .resizable()
                         .indicator(.activity)
@@ -33,14 +32,14 @@ struct ImageDetailsContentView: View {
                         .shadow(radius: 5)
                     Button(action: {
                         print("Setting favoriteImage")
-                        setFavoritePicture(chosenPicture: chosenImage)
+                        setFavoritePicture(chosenPicture: chosenFavoriteImage)
                     }) {
                         Image(systemName: isFavorite ? "heart.fill" : "heart")
                             .resizable()
                             .foregroundColor(.red)
                             .frame(width: 36, height: 36, alignment: .center)
                     }
-                    Text(chosenImage.alt_description ?? "no available description")
+                    Text(chosenFavoriteImage.alt_description)
                         .font(.title3)
                         .multilineTextAlignment(.center)
                 }
@@ -49,29 +48,32 @@ struct ImageDetailsContentView: View {
         } .navigationTitle("Detalles")
     }
     
-    func setFavoritePicture(chosenPicture: UnsplashPhoto) {
-        if let favPicture = localDB.read(Favorites.self).filter("id='\(chosenImage.id)'").first{
-            print("ya existía la foto")
-            self.localDB.delete(favPicture)
-            isFavorite = false
-        } else {
-            localDB.create(createFavoritesObject(chosenPicture: chosenPicture))
-            isFavorite = true
-            print("agregando a favoritas")
-        }
+    func setFavoritePicture(chosenPicture: Favorites) {
+//        if let favPicture = localDB.read(Favorites.self).filter("id='\(chosenPicture.id)'").first{
+//            print("ya existía la foto")
+//            print(favPicture)
+//            if chosenPicture.id !=  ""{
+//                localDB.delete(favPicture)
+//            }
+//            isFavorite = false
+//        } else {
+//            localDB.create(createFavoritesObject(chosenPicture: chosenPicture))
+//            isFavorite = true
+//            print("agregando a favoritas")
+//        }
     }
     
-    func createFavoritesObject(chosenPicture: UnsplashPhoto) -> Favorites {
+    func createFavoritesObject(chosenPicture: Favorites) -> Favorites {
         let favorite = Favorites()
         favorite.id = chosenPicture.id
-        favorite.photoUrl = chosenPicture.urls["thumb"] ?? ""
-        favorite.alt_description = chosenPicture.alt_description ?? ""
+        favorite.photoUrl = chosenPicture.photoUrl
+        favorite.alt_description = chosenPicture.alt_description
         return favorite
     }
 }
 
-//struct ImageDetailsContentView_Previews: PreviewProvider {
+//struct FavoriteImageDetailsContentView_Previews: PreviewProvider {
 //    static var previews: some View {
-//        ImageDetailsContentView()
+//        FavoriteImageDetailsContentView()
 //    }
 //}

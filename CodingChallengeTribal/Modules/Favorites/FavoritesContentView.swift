@@ -13,6 +13,8 @@ struct FavoritesContentView: View {
     
     @ObservedObject var favoriteItemsRealm = FavoritesRealm()
     
+    @State var isFavorite: Bool = false
+    
     var body: some View {
         
         NavigationView {
@@ -36,13 +38,17 @@ struct FavoritesContentView: View {
                     LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/, spacing: 10, pinnedViews: /*@START_MENU_TOKEN@*/[]/*@END_MENU_TOKEN@*/, content: {
                         ForEach(favoriteItemsRealm.favoritesArrayRealm, id: \.id) { photo in
                             VStack {
-                                WebImage(url: URL(string: photo.photoUrl))
-                                    .placeholder(Image(systemName: "photo"))
-                                    .resizable()
-                                    .indicator(.activity)
-                                    .scaledToFit()
-                                    .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
-                                    .shadow(radius: 5)
+                                NavigationLink(
+                                    destination: FavoriteImageDetailsContentView(chosenFavoriteImage: photo),
+                                    label: {
+                                        WebImage(url: URL(string: photo.photoUrl))
+                                            .placeholder(Image(systemName: "photo"))
+                                            .resizable()
+                                            .indicator(.activity)
+                                            .scaledToFit()
+                                            .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
+                                            .shadow(radius: 5)
+                                    })
                             }
                         }
                     })

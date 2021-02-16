@@ -12,7 +12,7 @@ target 'CodingChallengeTribal' do
   pod 'RxSwift', '~> 5'
   pod 'SwiftyJSON', '~> 4.0'
   pod 'SDWebImageSwiftUI'
-  pod 'RealmSwift'
+  pod 'RealmSwift', '=10.1.4'
   
 
   target 'CodingChallengeTribalTests' do
